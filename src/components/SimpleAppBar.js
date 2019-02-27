@@ -18,7 +18,7 @@ function SimpleAppBar(props) {
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            Simple ArcGIS map with React!
+            ArcGIS map with React!
           </Typography>
         </Toolbar>
       </AppBar>

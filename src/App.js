@@ -30,7 +30,7 @@ class App extends Component {
        <SimpleAppBar />
        <Paper className={classes.blurb} elevation={1}>
         <p>
-          Built a simple map using ArcGIS API. It shows all the schools in the Greater Houston Area based on info from Houston's Open Data Portal. Click{' '}
+          Built a map using ArcGIS API. It shows all the schools in the Greater Houston Area based on info from Houston's Open Data Portal. Click{' '}
           <a href="https://cohgis-mycity.opendata.arcgis.com/datasets/schools?geometry=-103.506%2C28.016%2C-87.686%2C31.356&orderBy=IN_Street&orderByAsc=false" target="_blank">here</a>
           {' '}to see the data. Check the Actions tab to send an email to the School Principal. 
         </p>

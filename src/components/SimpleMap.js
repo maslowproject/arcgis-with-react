@@ -24,8 +24,14 @@ class SimpleMap extends React.Component {
 
   handleMapLoad = (map, view) => {
     this.setState({ map, view }, () => {
-      loadModules(['esri/layers/FeatureLayer'])
-      .then(([ FeatureLayer ]) => {
+      loadModules([
+        'esri/layers/FeatureLayer',
+        'esri/widgets/Search'
+      ])
+      .then(([
+        FeatureLayer,
+        Search 
+      ]) => {
         var fLayer = new FeatureLayer({ 
           url: 'https://cohegis.houstontx.gov/cohgispub/rest/services/PD/Neighborhood_Services_wm/MapServer/0',
           popupTemplate: {
@@ -51,6 +57,21 @@ class SimpleMap extends React.Component {
             }]
           } })
 
+        var searchWidget = new Search({
+          view,
+          sources: [{
+            featureLayer: fLayer,
+            searchFields: ["CAMPNAME"],
+            displayField: 'CAMPNAME',
+            exactMatch: false,
+            placeholder: 'Search for School'
+          }],
+          includeDefaultSources: false
+        })
+
+        view.ui.add(searchWidget, {
+          position: 'top-left'
+        })
         map.add(fLayer)
 
         view.when(() => {
@@ -69,7 +90,7 @@ class SimpleMap extends React.Component {
               const { Email, USER_School_Principal: Principal } = popup.viewModel.selectedFeature.attributes
 
               if (Email) {
-                const url = `mailto:${Email}?subject=ATTN:%20${Principal.trim() || 'Principal'}`
+                const url = `mailto:${Email}?subject=ATTN:%20${Principal ? Principal.trim() : 'Principal'}`
 
                 window.location.href = url
               }
