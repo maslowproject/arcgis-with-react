@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/arcgis-with-react/precache-manifest.4e552241921fc48a7fc967639897740e.js"
+  "/arcgis-with-react/precache-manifest.f5ebb3aeeafb579ebc4fa5aa5771fa74.js"
 );
 
 workbox.clientsClaim();
